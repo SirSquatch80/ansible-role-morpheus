@@ -4,7 +4,7 @@
   args:
     creates: /etc/morpheus/morpheus-secrets.json
   async: 900
-  poll: 10
+  poll: 20
   delegate_to: "{{ item }}"
   loop: "{{ groups[morpheus_group] }}"
   run_once: true
@@ -16,7 +16,7 @@
     validate_certs: "{{ morpheus_validate_certs }}"
   register: urlcontent
   until: '"MORPHEUS PING" in urlcontent.content'
-  retries: 30
-  delay: 30
+  retries: 60
+  delay: 60
   loop: "{{ groups[morpheus_group] }}"
   run_once: true
