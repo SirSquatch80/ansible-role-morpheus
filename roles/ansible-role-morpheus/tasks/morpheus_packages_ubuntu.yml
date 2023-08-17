@@ -15,6 +15,12 @@
 - name: Morpheus UI | Install Morpheus
   apt:
       deb: "{{ morpheus_package_ubuntu }}"
+      state: absent
+  when: morpheus_package_check = true
+
+- name: Morpheus UI | Install Morpheus
+  apt:
+      deb: "{{ morpheus_package_ubuntu }}"
       state: present
 
 - name: Morpheus UI | Install Morpheus Offline
